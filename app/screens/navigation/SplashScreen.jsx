@@ -1,14 +1,14 @@
 // TODO: splash screen
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import colors from '../../config/colors';
 
 export const SplashScreen = () => {
   return (
     <View style={styles.cotainer}>
-      <Text>Splash screen</Text>
+      
     </View>
   );
 };

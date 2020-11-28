@@ -5,7 +5,16 @@ import { Button, Image, ImageBackground, StyleSheet, Text, View } from 'react-na
 
 import colors from '../../config/colors';
 
-export const WelcomeScreen = () => {
+// DONE: add image
+export const WelcomeScreen = ({ navigation }) => {
+
+  // TODO: implement facebook login
+  const _handleLoginWithFacebook = () => console.log('login with facebook');
+
+  const _handleRegister = () => navigation.navigate('Register');
+
+  const _handleLogin = () => navigation.navigate('Login');
+
   return (
     <ImageBackground
       style={styles.background}
@@ -13,13 +22,20 @@ export const WelcomeScreen = () => {
     >
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={require('../../assets/images/logo.png')} />
-        <Text style={styles.text}>It's focus time</Text>
       </View>
-      <View style={styles.loginButton}>
-        <Button title="Login" />
+
+      <View style={styles.loginFacebookButton}>
+        <Button title="Continue with Facebook" onPress={_handleLoginWithFacebook}/>
       </View>
+
+      <Text style={styles.text}>--- or ---</Text>
+
       <View style={styles.registerButton}>
-        <Button title="Register" />
+        <Button title="Create account" onPress={_handleRegister}/>
+      </View>
+
+      <View style={styles.registerButton}>
+        <Button title="Already have an account? Login" onPress={_handleLogin}/>
       </View>
     </ImageBackground>
   );
@@ -31,10 +47,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center'
   },
-  loginButton: {
+  loginFacebookButton: {
     width: '100%',
-    height: 70,
-    backgroundColor: colors.tomato
+    height: 100
   },
   logo: {
     width: 100,
@@ -47,11 +62,10 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     width: '100%',
-    height: 70,
-    backgroundColor: colors.green
+    height: 100
   },
   text: {
     color: colors.textPrimary,
-    fontSize: 24
+    fontSize: 18
   }
 });

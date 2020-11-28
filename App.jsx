@@ -1,10 +1,12 @@
 import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
-import { Provider } from 'react-redux';
+import { StyleSheet, View } from 'react-native';
+import { Provider as StoreProvider } from 'react-redux';
+import { Provider as PaperProvider } from 'react-native-paper';
 
-import { store } from './app/core/store';
 import { Navigation } from './app/screens/navigation/Navigation';
+import { store } from './app/core/store';
+import { theme } from './app/assets/themes/dark';
 
 const App = () => {
 
@@ -15,10 +17,12 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Provider store={store}>
-        <Navigation />
-      </Provider>
-    </View>
+      <StoreProvider store={store}>
+        <PaperProvider theme={theme}>
+          <Navigation />
+        </PaperProvider>
+      </StoreProvider>
+    </View >
   );
 };
 

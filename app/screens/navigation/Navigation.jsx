@@ -11,6 +11,7 @@ import { SplashScreen } from './SplashScreen';
 import { BooksScreen } from '../books/BooksScreen';
 import { BookAddModal } from '../books/components/BookAddModal';
 import { BookEditModal } from '../books/components/BookEditModal';
+import { RegisterScreen } from '../register/RegisterScreen';
 
 const RootStack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export const Navigation = () => {
       <RootStack.Navigator initialRouteName="Home">
         <RootStack.Screen name="Splash" component={SplashScreen} />
         <RootStack.Screen name="Welcome" component={WelcomeScreen} />
+        <RootStack.Screen name="Register" component={RegisterScreen} />
         <RootStack.Screen name="Login" component={LoginScreen} />
 
         <RootStack.Screen name="Home" component={HomeScreen} />
@@ -32,6 +34,6 @@ export const Navigation = () => {
   );
 };
 
-// TODO: add material
+// DONE: add material
 
-// TODO: add material icons
+// DONE: add material icons

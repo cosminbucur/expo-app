@@ -28,3 +28,7 @@ yarn add @react-navigation/stack
 ```
 
 ### create stack navigator
+
+
+### sidebar navigation
+https://medium.com/@madhu314/sidebar-drawer-menus-in-react-native-da0c4062e5ee

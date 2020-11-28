@@ -25,3 +25,22 @@ import { Provider as PaperProvider } from "react-native-paper";
       <MainScreen />
     </PaperProvider>
 ```
+
+
+### fonts
+
+### icons
+https://callstack.github.io/react-native-paper/icons.html
+
+```js
+  <Button icon="camera">
+    Press me
+  </Button>
+```
+
+### icons with badge
+https://janhesters.com/how-to-add-a-badge-to-icons-in-react-native
+
+### recommended libraries
+
+https://callstack.github.io/react-native-paper/recommended-libraries.html

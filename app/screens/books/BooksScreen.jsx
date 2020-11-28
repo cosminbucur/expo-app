@@ -2,18 +2,20 @@
 
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Avatar, FAB } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 
 import colors from '../../config/colors';
 import { bookData } from '../../mocks/mocks';
 
-export const BooksScreen = () => {
+export const BooksScreen = ({ navigation }) => {
 
   const [selectedId, setSelectedId] = useState(null);
   const books = useSelector(state => state.books);
 
   const renderItem = ({ item }) => {
-    return (
+    return <>
+      <Avatar.Icon size={64} icon="book" />
       <BookItem
         item={item}
         onPress={() => {
@@ -21,18 +23,25 @@ export const BooksScreen = () => {
           console.log('selected book', item.id);
         }}
       />
-    );
+    </>;
   };
 
   return (
     <>
       <View style={styles.container}>
+
         <FlatList
           data={bookData}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
           extraData={selectedId}
           contentContainerStyle={styles.listContainer}
+        />
+
+        <FAB
+          style={styles.fab}
+          icon="plus"
+          onPress={() => navigation.navigate('BooksAdd')}
         />
 
       </View>
@@ -68,5 +77,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     color: colors.textPrimary
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0
   }
 });
