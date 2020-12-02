@@ -1,14 +1,52 @@
 // TODO: add modal
 
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Formik } from "formik";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { Button, TextInput } from "react-native-paper";
+import { useDispatch } from 'react-redux';
 
-import colors from '../../../config/colors';
+import colors from "../../../config/colors";
+import { addBook } from "../bookActions";
 
-export const BookAddModal = () => {
+// TODO: create add form
+export const BookAddModal = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.cotainer}>
-      <Text>Screen loaded</Text>
+      <Formik
+        initialValues={{ title: "", author: "", publishedAt: "" }}
+        onSubmit={(values) => {
+          console.log(values);
+          dispatch(addBook(values));
+          navigation.navigate('Books');
+        }}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values }) => (
+          <View>
+            <TextInput
+              label="Title"
+              style={styles.input}
+              onChangeText={handleChange("title")}
+              value={values.title}
+            />
+            <TextInput
+              label="Author"
+              style={styles.input}
+              onChangeText={handleChange("author")}
+              value={values.author}
+            />
+            <TextInput
+              label="Published at"
+              style={styles.input}
+              onChangeText={handleChange("publishedAt")}
+              value={values.publishedAt}
+            />
+            <Button onPress={handleSubmit}>Save</Button>
+          </View>
+        )}
+      </Formik>
     </View>
   );
 };
@@ -16,8 +54,12 @@ export const BookAddModal = () => {
 const styles = StyleSheet.create({
   cotainer: {
     flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor: colors.background
-  }
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: colors.background,
+  },
+  input: {
+    backgroundColor: colors.background,
+    color: colors.textPrimary
+  },
 });

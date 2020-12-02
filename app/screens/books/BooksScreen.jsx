@@ -7,11 +7,13 @@ import { useSelector } from 'react-redux';
 
 import colors from '../../config/colors';
 import { bookData } from '../../mocks/mocks';
+import { booksSelector } from './bookSelector';
 
 export const BooksScreen = ({ navigation }) => {
 
   const [selectedId, setSelectedId] = useState(null);
-  const books = useSelector(state => state.books);
+  const books = bookData;
+  // const books = useSelector(booksSelector);
 
   const renderItem = ({ item }) => {
     return <>
@@ -21,6 +23,9 @@ export const BooksScreen = ({ navigation }) => {
         onPress={() => {
           setSelectedId(item.id);
           console.log('selected book', item.id);
+          navigation.navigate('BookInfo', {
+            item: item
+          });
         }}
       />
     </>;
@@ -31,7 +36,7 @@ export const BooksScreen = ({ navigation }) => {
       <View style={styles.container}>
 
         <FlatList
-          data={bookData}
+          data={books}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
           extraData={selectedId}
@@ -52,6 +57,8 @@ export const BooksScreen = ({ navigation }) => {
 const BookItem = ({ item, onPress }) => (
   <TouchableOpacity onPress={onPress} style={styles.bookItem}>
     <Text style={styles.text}>{item.title}</Text>
+    <Text style={styles.text}>{item.author}</Text>
+    <Text style={styles.text}>{item.publishedAt}</Text>
   </TouchableOpacity>
 );
 
@@ -65,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: 'flex-end',
     alignItems: 'stretch',
-    backgroundColor: colors.yellow
+    backgroundColor: colors.green
   },
   bookItem: {
     height: 60,

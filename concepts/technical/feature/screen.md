@@ -8,9 +8,9 @@ import colors from '../../config/colors';
 
 export const WelcomeScreen = () => {
   return (
-      <View style={styles.cotainer}>
-        <Text>Screen loaded</Text>
-      </View>
+    <View style={styles.cotainer}>
+      <Text>Screen loaded</Text>
+    </View>
   );
 };
 

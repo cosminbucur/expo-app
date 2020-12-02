@@ -2,13 +2,13 @@ import { bookData } from '../../mocks/mocks';
 
 // TODO: initial state
 const initialState = {
-  list: bookData
+  list: []
 };
 
 // TODO: create reducer
 export const bookReducer = (state = initialState, action) => {
   switch (action.type) {
-  case 'ADD_BOOK_SUCCESS':
+  case 'ADD_BOOK':
     return {
       ...state,
       list: [

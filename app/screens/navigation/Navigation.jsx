@@ -12,6 +12,7 @@ import { BooksScreen } from '../books/BooksScreen';
 import { BookAddModal } from '../books/components/BookAddModal';
 import { BookEditModal } from '../books/components/BookEditModal';
 import { RegisterScreen } from '../register/RegisterScreen';
+import { BookInfo } from '../books/components/BookInfo';
 
 const RootStack = createStackNavigator();
 
@@ -27,6 +28,7 @@ export const Navigation = () => {
         <RootStack.Screen name="Home" component={HomeScreen} />
 
         <RootStack.Screen name="Books" component={BooksScreen} />
+        <RootStack.Screen name="BookInfo" component={BookInfo} />
         <RootStack.Screen name="BooksAdd" component={BookAddModal} />
         <RootStack.Screen name="BooksEdit" component={BookEditModal} />
       </RootStack.Navigator>
